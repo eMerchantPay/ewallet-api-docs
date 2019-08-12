@@ -1,0 +1,1661 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">cURL</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#version" class="toc-h1 toc-link" data-title="Version">Version</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#history" class="toc-h2 toc-link" data-title="History">History</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#endpoint-paths" class="toc-h2 toc-link" data-title="Endpoint paths">Endpoint paths</a>
+                  </li>
+                  <li>
+                    <a href="#request-and-response-headers" class="toc-h2 toc-link" data-title="Request and response headers">Request and response headers</a>
+                  </li>
+                  <li>
+                    <a href="#providing-parameters" class="toc-h2 toc-link" data-title="Providing parameters">Providing parameters</a>
+                  </li>
+                  <li>
+                    <a href="#working-with-monetary-amounts" class="toc-h2 toc-link" data-title="Working with monetary amounts">Working with monetary amounts</a>
+                  </li>
+                  <li>
+                    <a href="#working-with-dates" class="toc-h2 toc-link" data-title="Working with dates">Working with dates</a>
+                  </li>
+                  <li>
+                    <a href="#paginating-results" class="toc-h2 toc-link" data-title="Paginating results">Paginating results</a>
+                  </li>
+                  <li>
+                    <a href="#handling-errors" class="toc-h2 toc-link" data-title="Handling errors">Handling errors</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#transfers" class="toc-h2 toc-link" data-title="Transfers">Transfers</a>
+                  </li>
+                  <li>
+                    <a href="#single-payouts" class="toc-h2 toc-link" data-title="Single Payouts">Single Payouts</a>
+                  </li>
+                  <li>
+                    <a href="#batch-payouts" class="toc-h2 toc-link" data-title="Batch Payouts">Batch Payouts</a>
+                  </li>
+                  <li>
+                    <a href="#ezeepayouts" class="toc-h2 toc-link" data-title="eZeePayouts">eZeePayouts</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#data-types" class="toc-h1 toc-link" data-title="Data Types">Data Types</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#transfer" class="toc-h2 toc-link" data-title="Transfer">Transfer</a>
+                  </li>
+                  <li>
+                    <a href="#payoutrequest" class="toc-h2 toc-link" data-title="PayoutRequest">PayoutRequest</a>
+                  </li>
+                  <li>
+                    <a href="#singlepayout" class="toc-h2 toc-link" data-title="SinglePayout">SinglePayout</a>
+                  </li>
+                  <li>
+                    <a href="#batchpayout" class="toc-h2 toc-link" data-title="BatchPayout">BatchPayout</a>
+                  </li>
+                  <li>
+                    <a href="#ezeepayout" class="toc-h2 toc-link" data-title="eZeePayout">eZeePayout</a>
+                  </li>
+                  <li>
+                    <a href="#ezeepayoutdetails" class="toc-h2 toc-link" data-title="eZeePayoutDetails">eZeePayoutDetails</a>
+                  </li>
+                  <li>
+                    <a href="#billingaddress" class="toc-h2 toc-link" data-title="BillingAddress">BillingAddress</a>
+                  </li>
+                  <li>
+                    <a href="#creditcard" class="toc-h2 toc-link" data-title="CreditCard">CreditCard</a>
+                  </li>
+                  <li>
+                    <a href="#error" class="toc-h2 toc-link" data-title="Error">Error</a>
+                  </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
+                  </li>
+                  <li>
+                    <a href="#notification" class="toc-h2 toc-link" data-title="Notification">Notification</a>
+                  </li>
+                  <li>
+                    <a href="#notificationecho" class="toc-h2 toc-link" data-title="NotificationEcho">NotificationEcho</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='version'>Version</h1>
+<p><strong>API version 1.2.0</strong></p>
+
+<p><strong>Documentation version 1.2.0</strong></p>
+<h2 id='history'>History</h2>
+<table><thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1.0.0</td>
+<td>2016/09/19</td>
+<td>Dimitar Kostov</td>
+<td>Initial version</td>
+</tr>
+<tr>
+<td>1.1.0</td>
+<td>2018/06/10</td>
+<td>Dimitar Kostov</td>
+<td>Added Single and Batch Payouts</td>
+</tr>
+<tr>
+<td>1.2.0</td>
+<td>2018/08/10</td>
+<td>Dimitar Kostov</td>
+<td>Added eZeePayouts</td>
+</tr>
+</tbody></table>
+<h1 id='overview'>Overview</h1>
+<p>eZeeWallet API supports creating and listing transfer transactions via <strong>HTTPS using JSON</strong>.</p>
+
+<blockquote>
+<p>You can get cURL from <a href='https://curl.haxx.se'>https://curl.haxx.se</a></p>
+</blockquote>
+<h2 id='authentication'>Authentication</h2>
+<p>Wallet API uses <strong>HTTP Basic Authentication</strong>. Each merchant registered with eZeeWallet is provided an API username and password. These credentials are different from the login credentials of merchant employees and can be configured in &#39;Merchant API Details&#39; tab.</p>
+<h2 id='endpoint-paths'>Endpoint paths</h2>
+<table><thead>
+<tr>
+<th>Environment</th>
+<th>Address</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Staging</td>
+<td>https://staging.ezeewallet.com/api</td>
+</tr>
+<tr>
+<td>Production</td>
+<td>https://ezeewallet.com/api</td>
+</tr>
+</tbody></table>
+<h2 id='request-and-response-headers'>Request and response headers</h2>
+<p>Requests to eZeeWallet API endpoints must include the following HTTP header:</p>
+
+<p><code>Content-Type: application/json</code></p>
+
+<p>By default, all endpoint responses provide data as JSON in the response body and include a Content-Type header:</p>
+
+<p><code>application/json</code></p>
+<h2 id='providing-parameters'>Providing parameters</h2>
+<p>The way you provide parameters to a eZeeWallet API request depends on the HTTP method of the request.</p>
+<h3 id='get-requests'>GET requests</h3>
+<p>For GET requests, you provide parameters in a query string you append to your request&#39;s URL. For example, you provide the unique_id parameter to the ListTransfers endpoint like so:</p>
+
+<p><code>https://ezeewallet.com/api/transfers?unique_id=1234567890</code></p>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+  <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
+  <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+  <span class="s2">"source_wallet_pwd"</span>: <span class="s2">"UGFzc3dvcmQx"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>
+<span class="o">}</span>
+</code></pre><h3 id='post-requests'>POST requests</h3>
+<p>For POST requests, you instead provide parameters as JSON in the body of your request. For example, the body of a request to the CreateTransfer endpoint looks like this:</p>
+<h2 id='working-with-monetary-amounts'>Working with monetary amounts</h2>
+<p>Amounts on the API level should be submitted in the minor currency unit for the given currency.
+The currency field is in <strong>ISO 4217</strong> format.</p>
+
+<p>eZeeWallet does not support any form of Forex. Per transfer transaction, currency usage is restricted: the requested currency must match the currency that is configured for the source wallet and the target wallet. For example, if a consumer has a USD wallet and a merchant has only a GBP wallet, a transfer is not possible, resulting in a &quot;Currency mismatch&quot; error for any currency in the API request. If a consumer and a merchant both have a USD wallet only, then an API request for any currency other than USD will receive a &quot;Currency mismatch&quot; error.</p>
+<h2 id='working-with-dates'>Working with dates</h2>
+<p>All representations of dates are strings in <strong>ISO RFC3339</strong> format (date time 2011-01-11T00:00:00Z).</p>
+<h2 id='paginating-results'>Paginating results</h2>
+<p>List endpoints such as ListTransfers might paginate the results they return. This means that instead of returning all results in a single response, these endpoints might return some of the results, along with a attributes for current page, page count, etc in the response body.</p>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"pagination"</span>: <span class="o">{</span>
+    <span class="s2">"total_count"</span>: 190,
+    <span class="s2">"pages_count"</span>: 2,
+    <span class="s2">"page"</span>: 2,
+    <span class="s2">"per_page"</span>: 100
+  <span class="o">}</span>,
+
+  <span class="s2">"transfers"</span>: <span class="o">[</span>
+    <span class="o">{}</span>,
+    <span class="o">{}</span>,
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h2 id='handling-errors'>Handling errors</h2>
+<p>eZeeWallet API endpoints use HTTP protocol status codes to indicate errors.</p>
+
+<p>All eZeeWallet API endpoints include <a href="#error">Error</a> object in their response body if any errors occurred during a request. The response body has the following structure:</p>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"error"</span>: <span class="o">{</span>
+    <span class="s2">"code"</span>: 407,
+    <span class="s2">"message"</span>: <span class="s2">"Currency mismatch"</span>,
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Each error has the following fields:</p>
+
+<ul>
+<li>code is machine parsable error code</li>
+<li>message is a human-readable string with simple description of the error</li>
+</ul>
+
+<p>See <a href="#errors">Error Codes</a> for list of errors provided by the system</p>
+<h1 id='endpoints'>Endpoints</h1><h2 id='transfers'>Transfers</h2><h3 id='createtransfer'>CreateTransfer</h3>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+  <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
+  <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+  <span class="s2">"source_wallet_pwd"</span>: <span class="s2">"UGFzc3dvcmQx"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST /transfers</code></p>
+
+<p>Creates transfer, consumer to merchant wallet</p>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transfer"</span>: <span class="o">{</span>
+    <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
+    <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+    <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
+    <span class="s2">"amount"</span>: 10000,
+    <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+    <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+    <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+    <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+    <span class="s2">"status"</span>: <span class="s2">"approved"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response for pending async transfer</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transfer"</span>: <span class="o">{</span>
+    <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
+    <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+    <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
+    <span class="s2">"amount"</span>: 10000,
+    <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+    <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+    <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+    <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+    <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
+    <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/en/consumers/top_up/random_unique_id"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response for failed transfer due to an error</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"error"</span>: <span class="o">{</span>
+    <span class="s2">"code"</span>: 407,
+    <span class="s2">"message"</span>: <span class="s2">"Currency mismatch"</span>,
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Unique transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>usage</td>
+<td>string(255)</td>
+<td>no</td>
+<td>Description of the transaction that will be visible to end users</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>yes</td>
+<td>Amount of transaction in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>yes</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>source_wallet_id</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Email address of consumer who owns the source wallet</td>
+</tr>
+<tr>
+<td>source_wallet_pwd</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Password of consumer who owns the source wallet, in Base64 encoded form</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where customer is sent to after successful payment</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where customer is sent to after unsuccessful payment</td>
+</tr>
+<tr>
+<td>notification_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where notification for transfer is sent</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transfer</td>
+<td><a href="#transfer">Transfer</a></td>
+<td>The created transfer</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+
+<p>Note that in the case of pending async (consumer does not have balance for the transaction and needs to top up) merchant will receive <a href="#notification">Notification</a> upon transfer success/error and must respond with <a href="#notificationecho">NotificationEcho</a></p>
+<h3 id='listtransfers'>ListTransfers</h3>
+<p><code>GET /transfers?unique_id=value</code></p>
+
+<p><code>GET /transfers?transaction_id=value</code></p>
+
+<p><code>GET /transfers?start_date=value&amp;end_date=value</code></p>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"pagination"</span>: <span class="o">{</span>
+    <span class="s2">"total_count"</span>: 1,
+    <span class="s2">"pages_count"</span>: 1,
+    <span class="s2">"per_page"</span>: 30,
+    <span class="s2">"page"</span>: <span class="s2">"1"</span>
+  <span class="o">}</span>,
+  <span class="s2">"transfers"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"unique_id"</span>: <span class="s2">"f3a5870ab96f514f0e28983fb88a9c4eed2a366a"</span>,
+      <span class="s2">"transaction_id"</span>: <span class="s2">"40"</span>,
+      <span class="s2">"amount"</span>: 10000,
+      <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+      <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
+      <span class="s2">"source_wallet_id"</span>: <span class="s2">"dimitar.kostov@emerchantpay.com"</span>,
+      <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+      <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>requried</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>param_name</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>unique_id, transaction_id or start_date and end_date</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pagination</td>
+<td><a href="#pagination">Pagination</a></td>
+<td>pagination options object</td>
+</tr>
+<tr>
+<td>transfers</td>
+<td><a href="#transfer">Transfer</a></td>
+<td>Array of returned transfers</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any error that occurred during the request.</td>
+</tr>
+</tbody></table>
+<h2 id='single-payouts'>Single Payouts</h2><h3 id='create-single-payout'>Create Single Payout</h3>
+<p><code>POST /single_payouts</code></p>
+
+<p>Creates single payout, merchant wallet to consumer wallet</p>
+
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"consumer@emp.com"</span>,
+  <span class="s2">"amount"</span>: 100,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"unique_id"</span>: 2,
+  <span class="s2">"status"</span>: <span class="s2">"succeeded"</span>,
+  <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Requried</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payout_request</td>
+<td><a href="#payoutrequest">PayoutRequest</a></td>
+<td>Yes</td>
+<td>Payout request object</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payout</td>
+<td><a href="#singlepayout">SinglePayout</a></td>
+<td>The created payout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+<h2 id='batch-payouts'>Batch Payouts</h2><h3 id='create-batch-payout'>Create Batch Payout</h3>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"payout_requests"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer1@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 100,
+      <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 200,
+      <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc124"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 350,
+      <span class="s2">"currency"</span>: <span class="s2">"GBP"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc125"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"unique_id"</span>: 5,
+  <span class="s2">"status"</span>: <span class="s2">"pending"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST /batch_payouts</code></p>
+
+<p>Creates batch payout, merchant wallet to consumer wallet</p>
+
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Requried</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payout_requests</td>
+<td><a href="#payout-request">PayoutRequest[]</a></td>
+<td>Yes</td>
+<td>Array of payout request objects</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>batch_payout</td>
+<td><a href="#batchpayout">BatchPayout</a></td>
+<td>The created payout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+<h2 id='ezeepayouts'>eZeePayouts</h2>
+<p>eZeePayout is direct credit to consumers credit card. When the merchant requests payout via <a href="#createezeepayout">CreateEzeePayout</a> redirect_url is returned where the consumer should be pointed to. After the consumer completes entering credit card details and submitting the form, the merchant must approve or decline the payout. The transaction is async and the merchant will receive a <a href="#notification">Notification</a> after the approve/decline and must must respond with <a href="#notificationecho">NotificationEcho</a>. If the merchant does not take any action for 3 days(approve or decline the payout) the transaction will be marked as timed out</p>
+<h3 id='createezeepayout'>CreateEzeePayout</h3>
+<p><code>POST /ezee_payouts</code></p>
+
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>,
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+  <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
+  <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
+  <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/redirect_to/random_unique_id"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>
+<span class="o">}</span>
+</code></pre>
+<p>Creates eZeePayout, direct credit to credit card. </p>
+
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>string</td>
+<td>Unique transfer transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of transfer transaction in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string</td>
+<td>URL where the consumer will be redirected to on successful</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string</td>
+<td>URL where the consumer will be redirected to deposit money if status is pending async</td>
+</tr>
+<tr>
+<td>return_cancel_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if status is pending async</td>
+</tr>
+<tr>
+<td>notification_url</td>
+<td>string</td>
+<td>URL where notification for transfer is sent</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ezee_payout</td>
+<td><a href="#ezeepayout">EzeePayout</a></td>
+<td>The created eZeePayout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transaction_id"</span>: <span class="s2">"transaction123"</span>,
+  <span class="s2">"unique_id"</span>: <span class="s2">"unique_id"</span>,
+  <span class="s2">"amount"</span>: 1000,
+  <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"approved"</span>,
+  <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/redirect_to/random_unique_id"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"https://staging.ezeewallet.com/"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>,
+  <span class="s2">"billing_address"</span>: <span class="o">{</span>
+    <span class="s2">"first_name"</span>: <span class="s2">"Jane"</span>,
+    <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
+    <span class="s2">"address1"</span>: <span class="s2">"Address"</span>,
+    <span class="s2">"city"</span>: <span class="s2">"Vienna"</span>,
+    <span class="s2">"zip_code"</span>: <span class="s2">"1700"</span>,
+    <span class="s2">"country"</span>: <span class="s2">"Austria"</span>
+  <span class="o">}</span>,
+  <span class="s2">"credit_card"</span>: <span class="o">{</span>
+    <span class="s2">"holder"</span>: <span class="s2">"Jane Doe"</span>,
+    <span class="s2">"number"</span>: <span class="s2">"420000...0000"</span>,
+    <span class="s2">"expiration_month"</span>: <span class="s2">"January"</span>,
+    <span class="s2">"expiration_year"</span>: 2021
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='showezeepayout'>ShowEzeePayout</h3>
+<p><code>GET /ezee_payouts/:unique_id</code></p>
+
+<p>Gets eZeePayout data</p>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ezee_payout</td>
+<td><a href="#ezeepayoutdetails">EzeePayoutDetails</a></td>
+<td>Details about the ezeepayout transaction</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+
+<p><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
+<h3 id='approveezeepayout'>ApproveEzeePayout</h3>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"status"</span>: <span class="s2">"approved"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+  <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
+  <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"approved"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>,
+  <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/redirect_to/random_unique_id"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>PATCH /ezee_payouts/:unique_id</code></p>
+
+<p>Approves eZeePayout</p>
+
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Yes</td>
+<td>status of the payout</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ezee_payout</td>
+<td><a href="#ezeepayout">EzeePayout</a></td>
+<td>The updated payout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+
+<p><br/><br/></p>
+<h3 id='declineezeepayout'>DeclineEzeePayout</h3>
+<p><code>PATCH /ezee_payouts/:unique_id</code></p>
+
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"status"</span>: <span class="s2">"declined"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+  <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
+  <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"declined"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>,
+  <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/redirect_to/random_unique_id"</span>
+<span class="o">}</span>
+</code></pre>
+<p>Declines eZeePayout</p>
+
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Yes</td>
+<td>status of the payout</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ezee_payout</td>
+<td><a href="#ezeepayout">EzeePayout</a></td>
+<td>The updated payout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+<h1 id='data-types'>Data Types</h1><h2 id='transfer'>Transfer</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unique_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>transaction_id</td>
+<td>string</td>
+<td>Unique transfer transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of transfer transaction in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: approved or pending_async</td>
+</tr>
+<tr>
+<td>source_wallet_id</td>
+<td>string</td>
+<td>Email address of consumer who owns the source wallet</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if status is pending async</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if status is pending async</td>
+</tr>
+<tr>
+<td>redirect_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if status is pending async</td>
+</tr>
+</tbody></table>
+<h2 id='payoutrequest'>PayoutRequest</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string(255)</td>
+<td>Email address of consumer that will receive the amount</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of payout in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>merchant_reference</td>
+<td>string(255)</td>
+<td>Merchant reference identifier</td>
+</tr>
+</tbody></table>
+<h2 id='singlepayout'>SinglePayout</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unique_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: succeeded or failed</td>
+</tr>
+<tr>
+<td>merchant_reference</td>
+<td>string</td>
+<td>Merchant reference identifier</td>
+</tr>
+</tbody></table>
+<h2 id='batchpayout'>BatchPayout</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unique_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: pending or failed</td>
+</tr>
+</tbody></table>
+<h2 id='ezeepayout'>eZeePayout</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>string</td>
+<td>Unique transfer transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>unique_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of the payout transaction in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the payout: pending or failed</td>
+</tr>
+<tr>
+<td>redirect_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to enter credit card details</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string</td>
+<td>URL where customer is sent to after successful payout</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string</td>
+<td>URL where customer is sent to after unsuccessful payout</td>
+</tr>
+<tr>
+<td>return_cancel_url</td>
+<td>string</td>
+<td>URL where customer is sent to after a cancelled payout</td>
+</tr>
+</tbody></table>
+<h2 id='ezeepayoutdetails'>eZeePayoutDetails</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>string</td>
+<td>Unique transfer transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>unique_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of the payout transaction in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the payout: pending or failed</td>
+</tr>
+<tr>
+<td>redirect_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to enter credit card details</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string</td>
+<td>URL where customer is sent to after successful payout</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string</td>
+<td>URL where customer is sent to after unsuccessful payout</td>
+</tr>
+<tr>
+<td>return_cancel_url</td>
+<td>string</td>
+<td>URL where customer is sent to after a cancelled payout</td>
+</tr>
+<tr>
+<td>billing_address</td>
+<td><a href="#billingaddress">BillingAddress</a></td>
+<td>Billing address of the consumer</td>
+</tr>
+<tr>
+<td>credit_card</td>
+<td><a href="#creditcard">CreditCard</a></td>
+<td>Credit card details</td>
+</tr>
+</tbody></table>
+<h2 id='billingaddress'>BillingAddress</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>First name of the consumer</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>Last name of the consumer</td>
+</tr>
+<tr>
+<td>address1</td>
+<td>string</td>
+<td>First line of the address</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>City</td>
+</tr>
+<tr>
+<td>zip_code</td>
+<td>string</td>
+<td>Zip code</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Country</td>
+</tr>
+</tbody></table>
+<h2 id='creditcard'>CreditCard</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>holder</td>
+<td>string</td>
+<td>Name of the holder</td>
+</tr>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>First six and last four numbers on the card</td>
+</tr>
+<tr>
+<td>expiration_month</td>
+<td>string</td>
+<td>Expiration month of the card</td>
+</tr>
+<tr>
+<td>expiration_year</td>
+<td>string</td>
+<td>Expiration year of the card</td>
+</tr>
+</tbody></table>
+<h2 id='error'>Error</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>machine parsable error code</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>human-readable message with simple description of the error</td>
+</tr>
+</tbody></table>
+<h2 id='pagination'>Pagination</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total_count</td>
+<td>integer</td>
+<td>total count of the returned objects</td>
+</tr>
+<tr>
+<td>pages_count</td>
+<td>integer</td>
+<td>count of the pages</td>
+</tr>
+<tr>
+<td>page</td>
+<td>integer</td>
+<td>current page</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>integer</td>
+<td>number of returned objects per page</td>
+</tr>
+</tbody></table>
+<h2 id='notification'>Notification</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>string</td>
+<td>Unique transfer transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>unique_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction request</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>string</td>
+<td>The signature of the notification used to verify the notifcation</td>
+</tr>
+</tbody></table>
+
+<p>The signature is a mean of security to ensure that eZeeWallet is really the sender of the notification. It is generated by concatenating the unique id of the transaction with merchant name and generating a SHA1 Hash (Hex) of the string:</p>
+
+<p><code>SHA1 Hash (Hex) of &lt;unique_id&gt;&lt;merchant api_username&gt;</code></p>
+
+<p><strong>Example:</strong></p>
+
+<p><code>unique_id = 123456789abcdefg</code></p>
+
+<p><code>merchant api_username = 0987654321xyz</code></p>
+
+<p><code>signature -&gt; 9ec1df9a7013f6a5b952b9d3f12d620475d37c86</code></p>
+<h2 id='notificationecho'>NotificationEcho</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unique_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<p>eZeeWallet API attempts to return appropriate HTTP status codes for every request and returns errors with HTTP status, human readable error message and machine parsable error code and description in JSON format</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>HTTP Status</th>
+<th>Message</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td>400 Bad Request</td>
+<td>Parameters are missing or invalid</td>
+</tr>
+<tr>
+<td>402</td>
+<td>400 Bad Request</td>
+<td>Invalid credentials for source wallet account</td>
+</tr>
+<tr>
+<td>403</td>
+<td>400 Bad Request</td>
+<td>Transaction disallowed for source wallet account</td>
+</tr>
+<tr>
+<td>404</td>
+<td>400 Bad Request</td>
+<td>Merchant wallet is disabled</td>
+</tr>
+<tr>
+<td>405</td>
+<td>400 Bad Request</td>
+<td>Target wallet account not found</td>
+</tr>
+<tr>
+<td>406</td>
+<td>400 Bad Request</td>
+<td>Transaction disallowed for target wallet account</td>
+</tr>
+<tr>
+<td>407</td>
+<td>400 Bad Request</td>
+<td>Currency mismatch</td>
+</tr>
+<tr>
+<td>407</td>
+<td>400 Bad Request</td>
+<td>One of the payout currencies mismatched to the currency of source wallets</td>
+</tr>
+<tr>
+<td>407</td>
+<td>400 Bad Request</td>
+<td>Payout currency mismatched to the currency of source wallets</td>
+</tr>
+<tr>
+<td>407</td>
+<td>400 Bad Request</td>
+<td>Target wallet currency is different than the currency of the payout</td>
+</tr>
+<tr>
+<td>408</td>
+<td>400 Bad Request</td>
+<td>Transaction ID already processed</td>
+</tr>
+<tr>
+<td>409</td>
+<td>400 Bad Request</td>
+<td>Required top up amount is higher than the maximum deposit amount</td>
+</tr>
+<tr>
+<td>410</td>
+<td>400 Bad Request</td>
+<td>Transaction disallowed between wallets with different industry types</td>
+</tr>
+<tr>
+<td>412</td>
+<td>400 Bad Request</td>
+<td>Payouts for this account have been suspended</td>
+</tr>
+<tr>
+<td>413</td>
+<td>400 Bad Request</td>
+<td>One of the payout amounts is of an invalid format</td>
+</tr>
+<tr>
+<td>413</td>
+<td>400 Bad Request</td>
+<td>Payout amount is in an invalid format</td>
+</tr>
+<tr>
+<td>414</td>
+<td>400 Bad Request</td>
+<td>Insufficient balance in source wallet account to make a payout</td>
+</tr>
+<tr>
+<td>415</td>
+<td>400 Bad Request</td>
+<td>Exceeded threshold limit for payouts</td>
+</tr>
+<tr>
+<td>416</td>
+<td>400 Bad Request</td>
+<td>Record not found</td>
+</tr>
+<tr>
+<td>417</td>
+<td>400 Bad Request</td>
+<td>Could not approve a timed out credit payout request</td>
+</tr>
+<tr>
+<td>418</td>
+<td>400 Bad Request</td>
+<td>Could not approve a failed credit payout request</td>
+</tr>
+<tr>
+<td>419</td>
+<td>400 Bad Request</td>
+<td>Could not approve a declined credit payout request</td>
+</tr>
+<tr>
+<td>420</td>
+<td>400 Bad Request</td>
+<td>Credit payout request already approved</td>
+</tr>
+<tr>
+<td>500</td>
+<td>500 Internal Server Error</td>
+<td>Request Transfer failed due to internal error</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">cURL</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
