@@ -230,7 +230,7 @@ commit+push() {
 
   disable_expanded_output
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
-  git push --quiet $repo $deploy_branch_local:$deploy_branch -f
+  git push --quiet $repo $deploy_branch_local:$deploy_branch
 
   if [[ "$env" = 'prod' ]]; then
     git push --quiet $repo gh-pages-${version}:${version}
