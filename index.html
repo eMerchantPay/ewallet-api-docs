@@ -267,9 +267,6 @@
                   <li>
                     <a href="#batch-payouts" class="toc-h2 toc-link" data-title="Batch Payouts">Batch Payouts</a>
                   </li>
-                  <li>
-                    <a href="#ezeepayouts" class="toc-h2 toc-link" data-title="eZeePayouts">eZeePayouts</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -286,12 +283,6 @@
                   </li>
                   <li>
                     <a href="#batchpayout" class="toc-h2 toc-link" data-title="BatchPayout">BatchPayout</a>
-                  </li>
-                  <li>
-                    <a href="#ezeepayout" class="toc-h2 toc-link" data-title="eZeePayout">eZeePayout</a>
-                  </li>
-                  <li>
-                    <a href="#ezeepayoutdetails" class="toc-h2 toc-link" data-title="eZeePayoutDetails">eZeePayoutDetails</a>
                   </li>
                   <li>
                     <a href="#billingaddress" class="toc-h2 toc-link" data-title="BillingAddress">BillingAddress</a>
@@ -325,9 +316,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.2.1</strong></p>
+<p><strong>API version 1.2.2</strong></p>
 
-<p><strong>Documentation version 1.2.1</strong></p>
+<p><strong>Documentation version 1.2.2</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -360,6 +351,12 @@
 <td>2019/08/27</td>
 <td>Dimitar Kostov</td>
 <td>Added notification response example</td>
+</tr>
+<tr>
+<td>1.2.2</td>
+<td>2019/09/03</td>
+<td>Diganta Mandal</td>
+<td>Removed eZeePayouts</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -813,295 +810,6 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Any errors that occurred during the request.</td>
 </tr>
 </tbody></table>
-<h2 id='ezeepayouts'>eZeePayouts</h2>
-<p>eZeePayout is direct credit to consumers credit card. When the merchant requests payout via <a href="#createezeepayout">CreateEzeePayout</a> redirect_url is returned where the consumer should be pointed to. After the consumer completes entering credit card details and submitting the form, the merchant must approve or decline the payout. The transaction is async and the merchant will receive a <a href="#notification">Notification</a> after the approve/decline and must must respond with <a href="#notificationecho">NotificationEcho</a>. If the merchant does not take any action for 3 days(approve or decline the payout) the transaction will be marked as timed out</p>
-<h3 id='createezeepayout'>CreateEzeePayout</h3>
-<p><code>POST /ezee_payouts</code></p>
-
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"amount"</span>: 10000,
-  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
-  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
-  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
-  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
-  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>,
-  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/"</span>
-<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Example response</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
-  <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
-  <span class="s2">"amount"</span>: 10000,
-  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
-  <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
-  <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/redirect_to/random_unique_id"</span>,
-  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
-  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
-  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>
-<span class="o">}</span>
-</code></pre>
-<p>Creates eZeePayout, direct credit to credit card. </p>
-
-<p><strong>Body params</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>transaction_id</td>
-<td>string</td>
-<td>Unique transfer transaction id defined by merchant</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>integer</td>
-<td>Amount of transfer transaction in minor currency unit</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Currency code in ISO 4217</td>
-</tr>
-<tr>
-<td>return_success_url</td>
-<td>string</td>
-<td>URL where the consumer will be redirected to on successful</td>
-</tr>
-<tr>
-<td>return_failure_url</td>
-<td>string</td>
-<td>URL where the consumer will be redirected to deposit money if status is pending async</td>
-</tr>
-<tr>
-<td>return_cancel_url</td>
-<td>string</td>
-<td>URL where the consumer must be redirected to deposit money if status is pending async</td>
-</tr>
-<tr>
-<td>notification_url</td>
-<td>string</td>
-<td>URL where notification for transfer is sent</td>
-</tr>
-</tbody></table>
-
-<p><strong>Response fields</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ezee_payout</td>
-<td><a href="#ezeepayout">EzeePayout</a></td>
-<td>The created eZeePayout</td>
-</tr>
-<tr>
-<td>error</td>
-<td><a href="#error">Error</a></td>
-<td>Any errors that occurred during the request.</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example response</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"transaction_id"</span>: <span class="s2">"transaction123"</span>,
-  <span class="s2">"unique_id"</span>: <span class="s2">"unique_id"</span>,
-  <span class="s2">"amount"</span>: 1000,
-  <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
-  <span class="s2">"status"</span>: <span class="s2">"approved"</span>,
-  <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/redirect_to/random_unique_id"</span>,
-  <span class="s2">"return_success_url"</span>: <span class="s2">"https://staging.ezeewallet.com/"</span>,
-  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
-  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>,
-  <span class="s2">"billing_address"</span>: <span class="o">{</span>
-    <span class="s2">"first_name"</span>: <span class="s2">"Jane"</span>,
-    <span class="s2">"last_name"</span>: <span class="s2">"Doe"</span>,
-    <span class="s2">"address1"</span>: <span class="s2">"Address"</span>,
-    <span class="s2">"city"</span>: <span class="s2">"Vienna"</span>,
-    <span class="s2">"zip_code"</span>: <span class="s2">"1700"</span>,
-    <span class="s2">"country"</span>: <span class="s2">"Austria"</span>
-  <span class="o">}</span>,
-  <span class="s2">"credit_card"</span>: <span class="o">{</span>
-    <span class="s2">"holder"</span>: <span class="s2">"Jane Doe"</span>,
-    <span class="s2">"number"</span>: <span class="s2">"420000...0000"</span>,
-    <span class="s2">"expiration_month"</span>: <span class="s2">"January"</span>,
-    <span class="s2">"expiration_year"</span>: 2021
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre><h3 id='showezeepayout'>ShowEzeePayout</h3>
-<p><code>GET /ezee_payouts/:unique_id</code></p>
-
-<p>Gets eZeePayout data</p>
-
-<p><strong>Response fields</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ezee_payout</td>
-<td><a href="#ezeepayoutdetails">EzeePayoutDetails</a></td>
-<td>Details about the ezeepayout transaction</td>
-</tr>
-<tr>
-<td>error</td>
-<td><a href="#error">Error</a></td>
-<td>Any errors that occurred during the request.</td>
-</tr>
-</tbody></table>
-
-<p><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
-<h3 id='approveezeepayout'>ApproveEzeePayout</h3>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"status"</span>: <span class="s2">"approved"</span>
-<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Example response</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
-  <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
-  <span class="s2">"amount"</span>: 10000,
-  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
-  <span class="s2">"status"</span>: <span class="s2">"approved"</span>,
-  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
-  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
-  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>,
-  <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/redirect_to/random_unique_id"</span>
-<span class="o">}</span>
-</code></pre>
-<p><code>PATCH /ezee_payouts/:unique_id</code></p>
-
-<p>Approves eZeePayout</p>
-
-<p><strong>Body params</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>Yes</td>
-<td>status of the payout</td>
-</tr>
-</tbody></table>
-
-<p><strong>Response fields</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ezee_payout</td>
-<td><a href="#ezeepayout">EzeePayout</a></td>
-<td>The updated payout</td>
-</tr>
-<tr>
-<td>error</td>
-<td><a href="#error">Error</a></td>
-<td>Any errors that occurred during the request.</td>
-</tr>
-</tbody></table>
-
-<p><br/><br/></p>
-<h3 id='declineezeepayout'>DeclineEzeePayout</h3>
-<p><code>PATCH /ezee_payouts/:unique_id</code></p>
-
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"status"</span>: <span class="s2">"declined"</span>
-<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Example response</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
-  <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
-  <span class="s2">"amount"</span>: 10000,
-  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
-  <span class="s2">"status"</span>: <span class="s2">"declined"</span>,
-  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
-  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
-  <span class="s2">"return_cancel_url"</span>: <span class="s2">"http://example.com/cancel"</span>,
-  <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/redirect_to/random_unique_id"</span>
-<span class="o">}</span>
-</code></pre>
-<p>Declines eZeePayout</p>
-
-<p><strong>Body params</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>Yes</td>
-<td>status of the payout</td>
-</tr>
-</tbody></table>
-
-<p><strong>Response fields</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ezee_payout</td>
-<td><a href="#ezeepayout">EzeePayout</a></td>
-<td>The updated payout</td>
-</tr>
-<tr>
-<td>error</td>
-<td><a href="#error">Error</a></td>
-<td>Any errors that occurred during the request.</td>
-</tr>
-</tbody></table>
 <h1 id='data-types'>Data Types</h1><h2 id='transfer'>Transfer</h2>
 <table><thead>
 <tr>
@@ -1226,124 +934,6 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>status</td>
 <td>string</td>
 <td>Status of the transfer transaction: pending or failed</td>
-</tr>
-</tbody></table>
-<h2 id='ezeepayout'>eZeePayout</h2>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>transaction_id</td>
-<td>string</td>
-<td>Unique transfer transaction id defined by merchant</td>
-</tr>
-<tr>
-<td>unique_id</td>
-<td>string</td>
-<td>Unique id defined by eZeeWallet for later use</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>integer</td>
-<td>Amount of the payout transaction in minor currency unit</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Currency code in ISO 4217</td>
-</tr>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>Status of the payout: pending or failed</td>
-</tr>
-<tr>
-<td>redirect_url</td>
-<td>string</td>
-<td>URL where the consumer must be redirected to enter credit card details</td>
-</tr>
-<tr>
-<td>return_success_url</td>
-<td>string</td>
-<td>URL where customer is sent to after successful payout</td>
-</tr>
-<tr>
-<td>return_failure_url</td>
-<td>string</td>
-<td>URL where customer is sent to after unsuccessful payout</td>
-</tr>
-<tr>
-<td>return_cancel_url</td>
-<td>string</td>
-<td>URL where customer is sent to after a cancelled payout</td>
-</tr>
-</tbody></table>
-<h2 id='ezeepayoutdetails'>eZeePayoutDetails</h2>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>transaction_id</td>
-<td>string</td>
-<td>Unique transfer transaction id defined by merchant</td>
-</tr>
-<tr>
-<td>unique_id</td>
-<td>string</td>
-<td>Unique id defined by eZeeWallet for later use</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>integer</td>
-<td>Amount of the payout transaction in minor currency unit</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Currency code in ISO 4217</td>
-</tr>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>Status of the payout: pending or failed</td>
-</tr>
-<tr>
-<td>redirect_url</td>
-<td>string</td>
-<td>URL where the consumer must be redirected to enter credit card details</td>
-</tr>
-<tr>
-<td>return_success_url</td>
-<td>string</td>
-<td>URL where customer is sent to after successful payout</td>
-</tr>
-<tr>
-<td>return_failure_url</td>
-<td>string</td>
-<td>URL where customer is sent to after unsuccessful payout</td>
-</tr>
-<tr>
-<td>return_cancel_url</td>
-<td>string</td>
-<td>URL where customer is sent to after a cancelled payout</td>
-</tr>
-<tr>
-<td>billing_address</td>
-<td><a href="#billingaddress">BillingAddress</a></td>
-<td>Billing address of the consumer</td>
-</tr>
-<tr>
-<td>credit_card</td>
-<td><a href="#creditcard">CreditCard</a></td>
-<td>Credit card details</td>
 </tr>
 </tbody></table>
 <h2 id='billingaddress'>BillingAddress</h2>
