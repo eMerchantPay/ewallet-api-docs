@@ -316,9 +316,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.2.2</strong></p>
+<p><strong>API version 1.2.3</strong></p>
 
-<p><strong>Documentation version 1.2.2</strong></p>
+<p><strong>Documentation version 1.2.3</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -357,6 +357,12 @@
 <td>2019/09/03</td>
 <td>Diganta Mandal</td>
 <td>Removed eZeePayouts</td>
+</tr>
+<tr>
+<td>1.2.3</td>
+<td>2020/03/18</td>
+<td>Diganta Mandal</td>
+<td>Added optional currency parameters into the Transfers</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -459,6 +465,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
   <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
   <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
   <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
   <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
   <span class="s2">"source_wallet_pwd"</span>: <span class="s2">"UGFzc3dvcmQx"</span>,
   <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
@@ -542,6 +549,12 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>integer</td>
 <td>yes</td>
 <td>Amount of transaction in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>no</td>
+<td>Currency code in ISO 4217</td>
 </tr>
 <tr>
 <td>source_wallet_id</td>
