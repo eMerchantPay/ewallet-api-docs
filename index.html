@@ -316,7 +316,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.2.3</strong></p>
+<p><strong>API version 1.2.4</strong></p>
 
 <p><strong>Documentation version 1.2.3</strong></p>
 <h2 id='history'>History</h2>
@@ -363,6 +363,12 @@
 <td>2020/03/18</td>
 <td>Diganta Mandal</td>
 <td>Added optional currency parameters into the Transfers</td>
+</tr>
+<tr>
+<td>1.2.4</td>
+<td>2020/06/03</td>
+<td>Diganta Mandal</td>
+<td>Added required merchant_website parameters into the Transfers</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -470,7 +476,8 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
   <span class="s2">"source_wallet_pwd"</span>: <span class="s2">"UGFzc3dvcmQx"</span>,
   <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
   <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
-  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>,
+  <span class="s2">"merchant_website"</span>: <span class="s2">"www.test.com"</span>
 <span class="o">}</span>
 </code></pre>
 <p><code>POST /transfers</code></p>
@@ -585,6 +592,12 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>string(65535)</td>
 <td>yes</td>
 <td>URL where notification for transfer is sent</td>
+</tr>
+<tr>
+<td>merchant_website</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Website URL of the merchant</td>
 </tr>
 </tbody></table>
 
