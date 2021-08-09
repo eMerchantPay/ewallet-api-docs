@@ -288,12 +288,6 @@
                     <a href="#batchpayout" class="toc-h2 toc-link" data-title="BatchPayout">BatchPayout</a>
                   </li>
                   <li>
-                    <a href="#billingaddress" class="toc-h2 toc-link" data-title="BillingAddress">BillingAddress</a>
-                  </li>
-                  <li>
-                    <a href="#creditcard" class="toc-h2 toc-link" data-title="CreditCard">CreditCard</a>
-                  </li>
-                  <li>
                     <a href="#error" class="toc-h2 toc-link" data-title="Error">Error</a>
                   </li>
                   <li>
@@ -319,9 +313,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.2.6</strong></p>
+<p><strong>API version 1.2.7</strong></p>
 
-<p><strong>Documentation version 1.2.6</strong></p>
+<p><strong>Documentation version 1.2.7</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -384,6 +378,12 @@
 <td>2021/05/25</td>
 <td>Diganta Mandal</td>
 <td>Added notification IPs</td>
+</tr>
+<tr>
+<td>1.2.7</td>
+<td>2021/08/09</td>
+<td>Diganta Mandal</td>
+<td>Removed BIllingAddress and CreditCard data types</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -1003,74 +1003,6 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>status</td>
 <td>string</td>
 <td>Status of the transfer transaction: pending or failed</td>
-</tr>
-</tbody></table>
-<h2 id='billingaddress'>BillingAddress</h2>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>first_name</td>
-<td>string</td>
-<td>First name of the consumer</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>string</td>
-<td>Last name of the consumer</td>
-</tr>
-<tr>
-<td>address1</td>
-<td>string</td>
-<td>First line of the address</td>
-</tr>
-<tr>
-<td>city</td>
-<td>string</td>
-<td>City</td>
-</tr>
-<tr>
-<td>zip_code</td>
-<td>string</td>
-<td>Zip code</td>
-</tr>
-<tr>
-<td>country</td>
-<td>string</td>
-<td>Country</td>
-</tr>
-</tbody></table>
-<h2 id='creditcard'>CreditCard</h2>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>holder</td>
-<td>string</td>
-<td>Name of the holder</td>
-</tr>
-<tr>
-<td>number</td>
-<td>string</td>
-<td>First six and last four numbers on the card</td>
-</tr>
-<tr>
-<td>expiration_month</td>
-<td>string</td>
-<td>Expiration month of the card</td>
-</tr>
-<tr>
-<td>expiration_year</td>
-<td>string</td>
-<td>Expiration year of the card</td>
 </tr>
 </tbody></table>
 <h2 id='error'>Error</h2>
