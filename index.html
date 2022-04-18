@@ -313,9 +313,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.2.8</strong></p>
+<p><strong>API version 1.2.9</strong></p>
 
-<p><strong>Documentation version 1.2.8</strong></p>
+<p><strong>Documentation version 1.2.9</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -391,6 +391,12 @@
 <td>Diganta Mandal</td>
 <td>Added NotificationEcho response example</td>
 </tr>
+<tr>
+<td>1.2.9</td>
+<td>2022/04/18</td>
+<td>Diganta Mandal</td>
+<td>Change API documentation regarding Forex exchange</td>
+</tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
 <p>eZeeWallet API supports creating and listing transfer transactions via <strong>HTTPS using JSON</strong>.</p>
@@ -447,7 +453,11 @@
 <p>Amounts on the API level should be submitted in the minor currency unit for the given currency.
 The currency field is in <strong>ISO 4217</strong> format.</p>
 
-<p>eZeeWallet does not support any form of Forex. Per transfer transaction, currency usage is restricted: the requested currency must match the currency that is configured for the source wallet and the target wallet. For example, if a consumer has a USD wallet and a merchant has only a GBP wallet, a transfer is not possible, resulting in a &quot;Currency mismatch&quot; error for any currency in the API request. If a consumer and a merchant both have a USD wallet only, then an API request for any currency other than USD will receive a &quot;Currency mismatch&quot; error.</p>
+<p>eZeeWallet does support any form of Forex. Per transfer transaction, currency usage is not restricted: the requested currency can be different than currency that is configured for the source wallet and the target wallet.</p>
+
+<p>For example, if a consumer has a EUR wallet and a merchant has only a GBP wallet, a transfer is possible and EZW will take the amount requested in the API call from the user in their currency(EUR) and convert it into the merchant requested currency - GBP on a using specified exchange rate based on merchant contract</p>
+
+<p>If a consumer and a merchant both have a EUR wallets only, then an API request for any currency other than EUR will receive a &quot;Currency mismatch&quot; error.</p>
 <h2 id='working-with-dates'>Working with dates</h2>
 <p>All representations of dates are strings in <strong>ISO RFC3339</strong> format (date time 2011-01-11T00:00:00Z).</p>
 <h2 id='paginating-results'>Paginating results</h2>
