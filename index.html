@@ -313,9 +313,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.3.0</strong></p>
+<p><strong>API version 1.3.1</strong></p>
 
-<p><strong>Documentation version 1.3.0</strong></p>
+<p><strong>Documentation version 1.3.1</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -402,6 +402,12 @@
 <td>2022/06/10</td>
 <td>Diganta Mandal</td>
 <td>Added new parameter on Single Payout request</td>
+</tr>
+<tr>
+<td>1.3.1</td>
+<td>2022/08/11</td>
+<td>Diganta Mandal</td>
+<td>Added new endpoint for Transfers</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -658,6 +664,232 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </tbody></table>
 
 <p>Note that in the case of pending async (consumer does not have balance for the transaction and needs to top up) merchant will receive <a href="#notification">Notification</a> upon transfer success/error and must respond with <a href="#notificationecho">NotificationEcho</a></p>
+<h3 id='createtransfer-2'>CreateTransfer</h3>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"merchant_transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+  <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
+  <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+  <span class="s2">"source_wallet_pwd"</span>: <span class="s2">"UGFzc3dvcmQx"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>,
+  <span class="s2">"merchant_website"</span>: <span class="s2">"www.test.com"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST /transfers_new</code></p>
+
+<p>Creates transfer, consumer to merchant wallet</p>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transfer"</span>: <span class="o">{</span>
+    <span class="s2">"merchant_transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+    <span class="s2">"first_name"</span>: <span class="s2">"consumer's first name"</span>,
+    <span class="s2">"last_name"</span>: <span class="s2">"consumer's last name"</span>,
+    <span class="s2">"ezw_reference_id"</span>: <span class="s2">"abc123"</span>,
+    <span class="s2">"amount"</span>: 10000,
+    <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+    <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+    <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+    <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+    <span class="s2">"status"</span>: <span class="s2">"approved"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response for pending async transfer</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transfer"</span>: <span class="o">{</span>
+    <span class="s2">"merchant_transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+    <span class="s2">"first_name"</span>: <span class="s2">"consumer's first name"</span>,
+    <span class="s2">"last_name"</span>: <span class="s2">"consumer's last name"</span>,
+    <span class="s2">"amount"</span>: 10000,
+    <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+    <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+    <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+    <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+    <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
+    <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/en/consumers/top_up/random_unique_id"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response for failed transfer due to an error</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"error"</span>: <span class="o">{</span>
+    <span class="s2">"code"</span>: 407,
+    <span class="s2">"message"</span>: <span class="s2">"Currency mismatch"</span>,
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>merchant_transaction_id</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Unique transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>usage</td>
+<td>string(255)</td>
+<td>no</td>
+<td>Description of the transaction that will be visible to end users</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>yes</td>
+<td>Amount of transaction in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>no</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>source_wallet_id</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Email address of consumer who owns the source wallet</td>
+</tr>
+<tr>
+<td>source_wallet_pwd</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Password of consumer who owns the source wallet, in Base64 encoded form</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where customer is sent to after successful payment</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where customer is sent to after unsuccessful payment</td>
+</tr>
+<tr>
+<td>notification_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where notification for transfer is sent</td>
+</tr>
+<tr>
+<td>merchant_website</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>Website URL of the merchant</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>merchant_transaction_id</td>
+<td>string</td>
+<td>Unique transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Unique transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: approved or pending_async</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>Unique transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>source_wallet_id</td>
+<td>string</td>
+<td>Email address of consumer who owns the source wallet</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+<tr>
+<td>redirect_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>Consumer&#39;s first name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>Consumer&#39;s last name</td>
+</tr>
+<tr>
+<td>ezw_reference_id</td>
+<td>string</td>
+<td>Unique transaction id in eZeeWallet transaction history</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+
+<p>Status of the transaction in the response as follows:
+* Approved – the payment was transferred from consumer&#39;s account to your merchant account.
+* Declined – the payment was declined. See the Error section in our API documentation for more information.
+* Pending – the consumer does not have enough balance for the transaction and needs to top up.</p>
+
+<p>The customer will be prompted to log in to their account and deposit the difference. Once the deposit is finalised, you will receive a <a href="#notification">Notification</a> to the notification URL specified in your request upon transfer success or error and merchant must respond to us via <a href="#notificationecho">NotificationEcho</a>.</p>
+
+<p><strong>Notifications Possible statuses for the notification sent to merchant:</strong>
+* Approved – when the deposit of the user was successful, and the funds have been transferred immediately to your account.
+* Declined – when the deposit was not successful. In such cases, the user will have to retry the deposit on your website.
+* Timeout – when the user took too long to finalise the deposit or did not follow the redirect.</p>
 <h3 id='listtransfers'>ListTransfers</h3>
 <p><code>GET /transfers?transaction_id=value</code></p>
 
