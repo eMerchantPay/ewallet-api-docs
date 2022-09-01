@@ -313,9 +313,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.3.1</strong></p>
+<p><strong>API version 1.3.2</strong></p>
 
-<p><strong>Documentation version 1.3.1</strong></p>
+<p><strong>Documentation version 1.3.2</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -409,6 +409,12 @@
 <td>Diganta Mandal</td>
 <td>Added new endpoint for Transfers</td>
 </tr>
+<tr>
+<td>1.3.2</td>
+<td>2022/09/01</td>
+<td>Diganta Mandal</td>
+<td>Added new staging URL</td>
+</tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
 <p>eZeeWallet API supports creating and listing transfer transactions via <strong>HTTPS using JSON</strong>.</p>
@@ -426,7 +432,11 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Staging</td>
+<td>Staging New</td>
+<td>https://stg.ezeewallet.com/api</td>
+</tr>
+<tr>
+<td>Staging Old</td>
 <td>https://staging.ezeewallet.com/api</td>
 </tr>
 <tr>
@@ -879,17 +889,23 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </tr>
 </tbody></table>
 
-<p>Status of the transaction in the response as follows:
-* Approved – the payment was transferred from consumer&#39;s account to your merchant account.
-* Declined – the payment was declined. See the Error section in our API documentation for more information.
-* Pending – the consumer does not have enough balance for the transaction and needs to top up.</p>
+<p>Status of the transaction in the response as follows:</p>
+
+<ul>
+<li>Approved – the payment was transferred from consumer&#39;s account to your merchant account.</li>
+<li>Declined – the payment was declined. See the Error section in our API documentation for more information.</li>
+<li>Pending – the consumer does not have enough balance for the transaction and needs to top up.</li>
+</ul>
 
 <p>The customer will be prompted to log in to their account and deposit the difference. Once the deposit is finalised, you will receive a <a href="#notification">Notification</a> to the notification URL specified in your request upon transfer success or error and merchant must respond to us via <a href="#notificationecho">NotificationEcho</a>.</p>
 
-<p><strong>Notifications Possible statuses for the notification sent to merchant:</strong>
-* Approved – when the deposit of the user was successful, and the funds have been transferred immediately to your account.
-* Declined – when the deposit was not successful. In such cases, the user will have to retry the deposit on your website.
-* Timeout – when the user took too long to finalise the deposit or did not follow the redirect.</p>
+<p><strong>Notifications Possible statuses for the notification sent to merchant:</strong></p>
+
+<ul>
+<li>Approved – when the deposit of the user was successful, and the funds have been transferred immediately to your account.</li>
+<li>Declined – when the deposit was not successful. In such cases, the user will have to retry the deposit on your website.</li>
+<li>Timeout – when the user took too long to finalise the deposit or did not follow the redirect.</li>
+</ul>
 <h3 id='listtransfers'>ListTransfers</h3>
 <p><code>GET /transfers?transaction_id=value</code></p>
 
