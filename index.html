@@ -265,7 +265,13 @@
                     <a href="#single-payouts" class="toc-h2 toc-link" data-title="Single Payouts">Single Payouts</a>
                   </li>
                   <li>
+                    <a href="#single-payouts-new-endpoint" class="toc-h2 toc-link" data-title="Single Payouts New Endpoint">Single Payouts New Endpoint</a>
+                  </li>
+                  <li>
                     <a href="#batch-payouts" class="toc-h2 toc-link" data-title="Batch Payouts">Batch Payouts</a>
+                  </li>
+                  <li>
+                    <a href="#batch-payouts-new-endpoint" class="toc-h2 toc-link" data-title="Batch Payouts New Endpoint">Batch Payouts New Endpoint</a>
                   </li>
                   <li>
                     <a href="#accounts" class="toc-h2 toc-link" data-title="Accounts">Accounts</a>
@@ -285,7 +291,16 @@
                     <a href="#singlepayout" class="toc-h2 toc-link" data-title="SinglePayout">SinglePayout</a>
                   </li>
                   <li>
+                    <a href="#singlepayoutnew" class="toc-h2 toc-link" data-title="SinglePayoutNew">SinglePayoutNew</a>
+                  </li>
+                  <li>
                     <a href="#batchpayout" class="toc-h2 toc-link" data-title="BatchPayout">BatchPayout</a>
+                  </li>
+                  <li>
+                    <a href="#batchpayoutnew" class="toc-h2 toc-link" data-title="BatchPayoutNew">BatchPayoutNew</a>
+                  </li>
+                  <li>
+                    <a href="#consumerdata" class="toc-h2 toc-link" data-title="ConsumerData">ConsumerData</a>
                   </li>
                   <li>
                     <a href="#error" class="toc-h2 toc-link" data-title="Error">Error</a>
@@ -313,9 +328,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.3.2</strong></p>
+<p><strong>API version 1.3.3</strong></p>
 
-<p><strong>Documentation version 1.3.2</strong></p>
+<p><strong>Documentation version 1.3.3</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -414,6 +429,12 @@
 <td>2022/09/01</td>
 <td>Diganta Mandal</td>
 <td>Added new staging URL</td>
+</tr>
+<tr>
+<td>1.3.3</td>
+<td>2023/02/24</td>
+<td>Milko Mihailov</td>
+<td>Added new endpoints for refactored payouts</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -674,7 +695,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </tbody></table>
 
 <p>Note that in the case of pending async (consumer does not have balance for the transaction and needs to top up) merchant will receive <a href="#notification">Notification</a> upon transfer success/error and must respond with <a href="#notificationecho">NotificationEcho</a></p>
-<h3 id='createtransfer-2'>CreateTransfer</h3>
+<h3 id='createtransfer-new-endpoint'>CreateTransfer New Endpoint</h3>
 <blockquote>
 <p>Example request</p>
 </blockquote>
@@ -1064,6 +1085,93 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Any errors that occurred during the request.</td>
 </tr>
 </tbody></table>
+<h2 id='single-payouts-new-endpoint'>Single Payouts New Endpoint</h2><h3 id='create-single-payout-2'>Create Single Payout</h3>
+<p><code>POST /single_payouts_new</code></p>
+
+<p>Creates single payout, merchant wallet to consumer wallet</p>
+
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"consumer@emp.com"</span>,
+  <span class="s2">"amount"</span>: 100,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>,
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"ezw_reference_id"</span>: <span class="s2">"1010312223"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
+  <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Email address of consumer that will receive the amount</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>yes</td>
+<td>Amount of payout in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>yes</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>merchant_reference</td>
+<td>string(255)</td>
+<td>no</td>
+<td>Merchant reference identifier</td>
+</tr>
+<tr>
+<td>notification_url</td>
+<td>string(65535)</td>
+<td>no</td>
+<td>URL where notification for payout is sent</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payout</td>
+<td><a href="#singlepayoutnew">SinglePayoutNew</a></td>
+<td>The created payout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
 <h2 id='batch-payouts'>Batch Payouts</h2><h3 id='create-batch-payout'>Create Batch Payout</h3>
 <blockquote>
 <p>Example request</p>
@@ -1115,7 +1223,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </thead><tbody>
 <tr>
 <td>payout_requests</td>
-<td><a href="#payout-request">PayoutRequest[]</a></td>
+<td><a href="#payoutrequest">PayoutRequest[]</a></td>
 <td>Yes</td>
 <td>Array of payout request objects</td>
 </tr>
@@ -1133,6 +1241,102 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>batch_payout</td>
 <td><a href="#batchpayout">BatchPayout</a></td>
+<td>The created payout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+<h2 id='batch-payouts-new-endpoint'>Batch Payouts New Endpoint</h2><h3 id='create-batch-payout-2'>Create Batch Payout</h3>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"payout_requests"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer1@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 100,
+      <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 200,
+      <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc124"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 350,
+      <span class="s2">"currency"</span>: <span class="s2">"GBP"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc125"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"unique_ids"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+          <span class="s2">"email"</span>: <span class="s2">"consumer1@emerchantpay.com"</span>,
+          <span class="s2">"amount"</span>: 100,
+          <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+          <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+          <span class="s2">"amount"</span>: 200,
+          <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+          <span class="s2">"merchant_reference"</span>: <span class="s2">"abc124"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+          <span class="s2">"amount"</span>: 350,
+          <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+          <span class="s2">"merchant_reference"</span>: <span class="s2">"abc125"</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"status"</span>: <span class="s2">"pending"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST /batch_payouts_new</code></p>
+
+<p>Creates batch payout, merchant wallet to consumer wallet</p>
+
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Requried</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payout_requests</td>
+<td><a href="#payoutrequest">PayoutRequest[]</a></td>
+<td>Yes</td>
+<td>Array of payout request objects</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>batch_payout</td>
+<td><a href="#batchpayoutnew">BatchPayoutNew</a></td>
 <td>The created payout</td>
 </tr>
 <tr>
@@ -1281,6 +1485,30 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Merchant reference identifier</td>
 </tr>
 </tbody></table>
+<h2 id='singlepayoutnew'>SinglePayoutNew</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ezw_reference_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: approved or pending</td>
+</tr>
+<tr>
+<td>merchant_reference</td>
+<td>string</td>
+<td>Merchant reference identifier</td>
+</tr>
+</tbody></table>
 <h2 id='batchpayout'>BatchPayout</h2>
 <table><thead>
 <tr>
@@ -1298,6 +1526,54 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>status</td>
 <td>string</td>
 <td>Status of the transfer transaction: pending or failed</td>
+</tr>
+</tbody></table>
+<h2 id='batchpayoutnew'>BatchPayoutNew</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unique_id</td>
+<td>array</td>
+<td>Array of  <a href="#consumerdata">ConsumerData</a></td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the payout: pending or failed</td>
+</tr>
+</tbody></table>
+<h2 id='consumerdata'>ConsumerData</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string(255)</td>
+<td>Email address of consumer that will receive the amount</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of payout in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>merchant_reference</td>
+<td>string(255)</td>
+<td>Merchant reference identifier</td>
 </tr>
 </tbody></table>
 <h2 id='error'>Error</h2>
