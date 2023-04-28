@@ -262,10 +262,22 @@
                     <a href="#transfers" class="toc-h2 toc-link" data-title="Transfers">Transfers</a>
                   </li>
                   <li>
+                    <a href="#transactions" class="toc-h2 toc-link" data-title="Transactions">Transactions</a>
+                  </li>
+                  <li>
                     <a href="#single-payouts" class="toc-h2 toc-link" data-title="Single Payouts">Single Payouts</a>
                   </li>
                   <li>
+                    <a href="#single-payouts-new-endpoint" class="toc-h2 toc-link" data-title="Single Payouts New Endpoint">Single Payouts New Endpoint</a>
+                  </li>
+                  <li>
                     <a href="#batch-payouts" class="toc-h2 toc-link" data-title="Batch Payouts">Batch Payouts</a>
+                  </li>
+                  <li>
+                    <a href="#batch-payouts-new-endpoint" class="toc-h2 toc-link" data-title="Batch Payouts New Endpoint">Batch Payouts New Endpoint</a>
+                  </li>
+                  <li>
+                    <a href="#accounts" class="toc-h2 toc-link" data-title="Accounts">Accounts</a>
                   </li>
               </ul>
           </li>
@@ -276,19 +288,25 @@
                     <a href="#transfer" class="toc-h2 toc-link" data-title="Transfer">Transfer</a>
                   </li>
                   <li>
+                    <a href="#transfernew" class="toc-h2 toc-link" data-title="TransferNew">TransferNew</a>
+                  </li>
+                  <li>
                     <a href="#payoutrequest" class="toc-h2 toc-link" data-title="PayoutRequest">PayoutRequest</a>
                   </li>
                   <li>
                     <a href="#singlepayout" class="toc-h2 toc-link" data-title="SinglePayout">SinglePayout</a>
                   </li>
                   <li>
+                    <a href="#singlepayoutnew" class="toc-h2 toc-link" data-title="SinglePayoutNew">SinglePayoutNew</a>
+                  </li>
+                  <li>
                     <a href="#batchpayout" class="toc-h2 toc-link" data-title="BatchPayout">BatchPayout</a>
                   </li>
                   <li>
-                    <a href="#billingaddress" class="toc-h2 toc-link" data-title="BillingAddress">BillingAddress</a>
+                    <a href="#batchpayoutnew" class="toc-h2 toc-link" data-title="BatchPayoutNew">BatchPayoutNew</a>
                   </li>
                   <li>
-                    <a href="#creditcard" class="toc-h2 toc-link" data-title="CreditCard">CreditCard</a>
+                    <a href="#consumerdata" class="toc-h2 toc-link" data-title="ConsumerData">ConsumerData</a>
                   </li>
                   <li>
                     <a href="#error" class="toc-h2 toc-link" data-title="Error">Error</a>
@@ -316,9 +334,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.2.2</strong></p>
+<p><strong>API version 1.3.4</strong></p>
 
-<p><strong>Documentation version 1.2.2</strong></p>
+<p><strong>Documentation version 1.3.4</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -358,6 +376,78 @@
 <td>Diganta Mandal</td>
 <td>Removed eZeePayouts</td>
 </tr>
+<tr>
+<td>1.2.3</td>
+<td>2020/03/18</td>
+<td>Diganta Mandal</td>
+<td>Added optional currency parameters into the Transfers</td>
+</tr>
+<tr>
+<td>1.2.4</td>
+<td>2020/06/03</td>
+<td>Diganta Mandal</td>
+<td>Added required merchant_website parameters into the Transfers</td>
+</tr>
+<tr>
+<td>1.2.5</td>
+<td>2021/01/22</td>
+<td>Diganta Mandal</td>
+<td>Added accounts as a new endpoint</td>
+</tr>
+<tr>
+<td>1.2.6</td>
+<td>2021/05/25</td>
+<td>Diganta Mandal</td>
+<td>Added notification IPs</td>
+</tr>
+<tr>
+<td>1.2.7</td>
+<td>2021/08/09</td>
+<td>Diganta Mandal</td>
+<td>Removed BIllingAddress and CreditCard data types</td>
+</tr>
+<tr>
+<td>1.2.8</td>
+<td>2021/08/31</td>
+<td>Diganta Mandal</td>
+<td>Added NotificationEcho response example</td>
+</tr>
+<tr>
+<td>1.2.9</td>
+<td>2022/04/18</td>
+<td>Diganta Mandal</td>
+<td>Change API documentation regarding Forex exchange</td>
+</tr>
+<tr>
+<td>1.3.0</td>
+<td>2022/06/10</td>
+<td>Diganta Mandal</td>
+<td>Added new parameter on Single Payout request</td>
+</tr>
+<tr>
+<td>1.3.1</td>
+<td>2022/08/11</td>
+<td>Diganta Mandal</td>
+<td>Added new endpoint for Transfers</td>
+</tr>
+<tr>
+<td>1.3.2</td>
+<td>2022/09/01</td>
+<td>Diganta Mandal</td>
+<td>Added new staging URL</td>
+</tr>
+<tr>
+<td>1.3.3</td>
+<td>2023/02/24</td>
+<td>Milko Mihailov</td>
+<td>Added new endpoints for refactored payouts</td>
+</tr>
+<tr>
+<td>1.3.4</td>
+<td>2023/04/28</td>
+<td>Diganta Mandal</td>
+<td>Added new endpoints for Transactions</td>
+</tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
 <p>eZeeWallet API supports creating and listing transfer transactions via <strong>HTTPS using JSON</strong>.</p>
@@ -375,7 +465,11 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Staging</td>
+<td>Staging New</td>
+<td>https://stg.ezeewallet.com/api</td>
+</tr>
+<tr>
+<td>Staging Old</td>
 <td>https://staging.ezeewallet.com/api</td>
 </tr>
 <tr>
@@ -394,9 +488,9 @@
 <h2 id='providing-parameters'>Providing parameters</h2>
 <p>The way you provide parameters to a eZeeWallet API request depends on the HTTP method of the request.</p>
 <h3 id='get-requests'>GET requests</h3>
-<p>For GET requests, you provide parameters in a query string you append to your request&#39;s URL. For example, you provide the unique_id parameter to the ListTransfers endpoint like so:</p>
+<p>For GET requests, you provide parameters in a query string you append to your request&#39;s URL. For example, you provide the transaction_id parameter to the ListTransfers endpoint like so:</p>
 
-<p><code>https://ezeewallet.com/api/transfers?unique_id=1234567890</code></p>
+<p><code>https://ezeewallet.com/api/transfers?transaction_id=MerchantTx123</code></p>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
   <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
@@ -414,7 +508,11 @@
 <p>Amounts on the API level should be submitted in the minor currency unit for the given currency.
 The currency field is in <strong>ISO 4217</strong> format.</p>
 
-<p>eZeeWallet does not support any form of Forex. Per transfer transaction, currency usage is restricted: the requested currency must match the currency that is configured for the source wallet and the target wallet. For example, if a consumer has a USD wallet and a merchant has only a GBP wallet, a transfer is not possible, resulting in a &quot;Currency mismatch&quot; error for any currency in the API request. If a consumer and a merchant both have a USD wallet only, then an API request for any currency other than USD will receive a &quot;Currency mismatch&quot; error.</p>
+<p>eZeeWallet does support any form of Forex. Per transfer transaction, currency usage is not restricted: the requested currency can be different than currency that is configured for the source wallet and the target wallet.</p>
+
+<p>For example, if a consumer has a EUR wallet and a merchant has only a GBP wallet, a transfer is possible and EZW will take the amount requested in the API call from the user in their currency(EUR) and convert it into the merchant requested currency - GBP on a using specified exchange rate based on merchant contract</p>
+
+<p>If a consumer and a merchant both have a EUR wallets only, then an API request for any currency other than EUR will receive a &quot;Currency mismatch&quot; error.</p>
 <h2 id='working-with-dates'>Working with dates</h2>
 <p>All representations of dates are strings in <strong>ISO RFC3339</strong> format (date time 2011-01-11T00:00:00Z).</p>
 <h2 id='paginating-results'>Paginating results</h2>
@@ -459,11 +557,13 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
   <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
   <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
   <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
   <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
   <span class="s2">"source_wallet_pwd"</span>: <span class="s2">"UGFzc3dvcmQx"</span>,
   <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
   <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
-  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>,
+  <span class="s2">"merchant_website"</span>: <span class="s2">"www.test.com"</span>
 <span class="o">}</span>
 </code></pre>
 <p><code>POST /transfers</code></p>
@@ -475,7 +575,6 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"transfer"</span>: <span class="o">{</span>
-    <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
     <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
     <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
     <span class="s2">"amount"</span>: 10000,
@@ -492,7 +591,6 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"transfer"</span>: <span class="o">{</span>
-    <span class="s2">"unique_id"</span>: <span class="s2">"random_unique_id"</span>,
     <span class="s2">"transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
     <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
     <span class="s2">"amount"</span>: 10000,
@@ -544,6 +642,12 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Amount of transaction in minor currency unit</td>
 </tr>
 <tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>no</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
 <td>source_wallet_id</td>
 <td>string(255)</td>
 <td>yes</td>
@@ -573,6 +677,12 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>yes</td>
 <td>URL where notification for transfer is sent</td>
 </tr>
+<tr>
+<td>merchant_website</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>Website URL of the merchant</td>
+</tr>
 </tbody></table>
 
 <p><strong>Response fields</strong></p>
@@ -597,10 +707,235 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </tbody></table>
 
 <p>Note that in the case of pending async (consumer does not have balance for the transaction and needs to top up) merchant will receive <a href="#notification">Notification</a> upon transfer success/error and must respond with <a href="#notificationecho">NotificationEcho</a></p>
-<h3 id='listtransfers'>ListTransfers</h3>
-<p><code>GET /transfers?unique_id=value</code></p>
+<h3 id='createtransfer-new-endpoint'>CreateTransfer New Endpoint</h3>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"merchant_transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+  <span class="s2">"usage"</span>: <span class="s2">"Purchasing shoes"</span>,
+  <span class="s2">"amount"</span>: 10000,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+  <span class="s2">"source_wallet_pwd"</span>: <span class="s2">"UGFzc3dvcmQx"</span>,
+  <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+  <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>,
+  <span class="s2">"merchant_website"</span>: <span class="s2">"www.test.com"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST /transfers_new</code></p>
 
-<p><code>GET /transfers?transaction_id=value</code></p>
+<p>Creates transfer, consumer to merchant wallet</p>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transfer"</span>: <span class="o">{</span>
+    <span class="s2">"merchant_transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+    <span class="s2">"first_name"</span>: <span class="s2">"consumer's first name"</span>,
+    <span class="s2">"last_name"</span>: <span class="s2">"consumer's last name"</span>,
+    <span class="s2">"ezw_reference_id"</span>: <span class="s2">"abc123"</span>,
+    <span class="s2">"amount"</span>: 10000,
+    <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+    <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+    <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+    <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+    <span class="s2">"status"</span>: <span class="s2">"approved"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response for pending async transfer</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"transfer"</span>: <span class="o">{</span>
+    <span class="s2">"merchant_transaction_id"</span>: <span class="s2">"MerchantTx123"</span>,
+    <span class="s2">"first_name"</span>: <span class="s2">"consumer's first name"</span>,
+    <span class="s2">"last_name"</span>: <span class="s2">"consumer's last name"</span>,
+    <span class="s2">"amount"</span>: 10000,
+    <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+    <span class="s2">"source_wallet_id"</span>: <span class="s2">"consumer@example.com"</span>,
+    <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
+    <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+    <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
+    <span class="s2">"redirect_url"</span>:<span class="s2">"https://ezeewallet.com/en/consumers/top_up/random_unique_id"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response for failed transfer due to an error</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"error"</span>: <span class="o">{</span>
+    <span class="s2">"code"</span>: 407,
+    <span class="s2">"message"</span>: <span class="s2">"Currency mismatch"</span>,
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>merchant_transaction_id</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Unique transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>usage</td>
+<td>string(255)</td>
+<td>no</td>
+<td>Description of the transaction that will be visible to end users</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>yes</td>
+<td>Amount of transaction in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>no</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>source_wallet_id</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Email address of consumer who owns the source wallet</td>
+</tr>
+<tr>
+<td>source_wallet_pwd</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Password of consumer who owns the source wallet, in Base64 encoded form</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where customer is sent to after successful payment</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where customer is sent to after unsuccessful payment</td>
+</tr>
+<tr>
+<td>notification_url</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>URL where notification for transfer is sent</td>
+</tr>
+<tr>
+<td>merchant_website</td>
+<td>string(65535)</td>
+<td>yes</td>
+<td>Website URL of the merchant</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>merchant_transaction_id</td>
+<td>string</td>
+<td>Unique transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Unique transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: approved or pending_async</td>
+</tr>
+<tr>
+<td>source_wallet_id</td>
+<td>string</td>
+<td>Email address of consumer who owns the source wallet</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+<tr>
+<td>redirect_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>Consumer&#39;s first name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>Consumer&#39;s last name</td>
+</tr>
+<tr>
+<td>ezw_reference_id</td>
+<td>string</td>
+<td>Unique transaction id in eZeeWallet transaction history</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+
+<p>Status of the transaction in the response as follows:</p>
+
+<ul>
+<li>Approved – the payment was transferred from consumer&#39;s account to your merchant account.</li>
+<li>Declined – the payment was declined. See the Error section in our API documentation for more information.</li>
+<li>Pending – the consumer does not have enough balance for the transaction and needs to top up.</li>
+</ul>
+
+<p>The customer will be prompted to log in to their account and deposit the difference. Once the deposit is finalised, you will receive a <a href="#notification">Notification</a> to the notification URL specified in your request upon transfer success or error and merchant must respond to us via <a href="#notificationecho">NotificationEcho</a>.</p>
+
+<p><strong>Notifications Possible statuses for the notification sent to merchant:</strong></p>
+
+<ul>
+<li>Approved – when the deposit of the user was successful, and the funds have been transferred immediately to your account.</li>
+<li>Declined – when the deposit was not successful. In such cases, the user will have to retry the deposit on your website.</li>
+<li>Timeout – when the user took too long to finalise the deposit or did not follow the redirect.</li>
+</ul>
+<h3 id='listtransfers'>ListTransfers</h3>
+<p><code>GET /transfers?ezw_reference_id=value</code></p>
 
 <p><code>GET /transfers?start_date=value&amp;end_date=value</code></p>
 
@@ -608,22 +943,20 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <p>Example response</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"pagination"</span>: <span class="o">{</span>
-    <span class="s2">"total_count"</span>: 1,
-    <span class="s2">"pages_count"</span>: 1,
-    <span class="s2">"per_page"</span>: 30,
-    <span class="s2">"page"</span>: <span class="s2">"1"</span>
-  <span class="o">}</span>,
+  <span class="s2">"total_count"</span>: 1,
+  <span class="s2">"pages_count"</span>: 1,
+  <span class="s2">"per_page"</span>: 30,
+  <span class="s2">"page"</span>: <span class="s2">"1"</span>,
   <span class="s2">"transfers"</span>: <span class="o">[</span>
     <span class="o">{</span>
-      <span class="s2">"unique_id"</span>: <span class="s2">"f3a5870ab96f514f0e28983fb88a9c4eed2a366a"</span>,
-      <span class="s2">"transaction_id"</span>: <span class="s2">"40"</span>,
-      <span class="s2">"amount"</span>: 10000,
-      <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
-      <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
-      <span class="s2">"source_wallet_id"</span>: <span class="s2">"dimitar.kostov@emerchantpay.com"</span>,
+      <span class="s2">"ezw_reference_id"</span>: <span class="s2">"1062431493"</span>,
+      <span class="s2">"merchant_transaction_id"</span>: <span class="s2">"m_tr_id1681110756"</span>,
+      <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+      <span class="s2">"consumer_email"</span>: <span class="s2">"testezeewallet+demo@gmail.com"</span>,
       <span class="s2">"return_success_url"</span>: <span class="s2">"http://example.com/success"</span>,
-      <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>
+      <span class="s2">"return_failure_url"</span>: <span class="s2">"http://example.com/failure"</span>,
+      <span class="s2">"status"</span>: <span class="s2">"approved"</span>,
+      <span class="s2">"amount"</span>: 6000
     <span class="o">}</span>
   <span class="o">]</span>
 <span class="o">}</span>
@@ -634,7 +967,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <th>Name</th>
 <th>Type</th>
-<th>requried</th>
+<th>Requried</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -642,7 +975,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>param_name</td>
 <td>string(255)</td>
 <td>yes</td>
-<td>unique_id, transaction_id or start_date and end_date</td>
+<td>ezw_reference_id or start_date and end_date</td>
 </tr>
 </tbody></table>
 
@@ -662,7 +995,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </tr>
 <tr>
 <td>transfers</td>
-<td><a href="#transfer">Transfer</a></td>
+<td><a href="#transfernew">TransferNew</a></td>
 <td>Array of returned transfers</td>
 </tr>
 <tr>
@@ -671,6 +1004,91 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Any error that occurred during the request.</td>
 </tr>
 </tbody></table>
+
+<p>Status of the transaction in the response as follows:</p>
+
+<ul>
+<li>Approved – the transaction is approved for both merchant and consumer.</li>
+<li>Declined – the payment was declined. See the Error section in our API documentation for more information.</li>
+<li>Pending – the transaction is in pending status.</li>
+</ul>
+<h2 id='transactions'>Transactions</h2><h3 id='list-transactions'>List Transactions</h3>
+<p><code>GET /transaction?ezw_reference_id=value</code></p>
+
+<blockquote>
+<p>Example response for transaction type - transfer:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"ezw_reference_id"</span>: <span class="s2">"1062431493"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"approved"</span>,
+  <span class="s2">"type"</span>: <span class="s2">"transfer"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response for transaction type - payout:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"ezw_reference_id"</span>: <span class="s2">"1062431493"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"approved"</span>,
+  <span class="s2">"type"</span>: <span class="s2">"payout"</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Requried</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>param_name</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>ezw_reference_id, retuned with the initial transaction</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ezw_reference_id</td>
+<td>string</td>
+<td>Unique transaction id in eZeeWallet transaction history</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: approved or pending or declined</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Transaction type: transfer or payout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any error that occurred during the request.</td>
+</tr>
+</tbody></table>
+
+<p>Status of the transaction in the response as follows:</p>
+
+<ul>
+<li>Approved – the transaction is approved for both merchant and consumer.</li>
+<li>Declined – the payment was declined. See the Error section in our API documentation for more information.</li>
+<li>Pending – the transaction is in pending status.</li>
+</ul>
 <h2 id='single-payouts'>Single Payouts</h2><h3 id='create-single-payout'>Create Single Payout</h3>
 <p><code>POST /single_payouts</code></p>
 
@@ -683,7 +1101,8 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
   <span class="s2">"email"</span>: <span class="s2">"consumer@emp.com"</span>,
   <span class="s2">"amount"</span>: 100,
   <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
-  <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+  <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>,
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>
 <span class="o">}</span>
 </code></pre>
 <blockquote>
@@ -701,15 +1120,39 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <th>Name</th>
 <th>Type</th>
-<th>Requried</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>payout_request</td>
-<td><a href="#payoutrequest">PayoutRequest</a></td>
-<td>Yes</td>
-<td>Payout request object</td>
+<td>email</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Email address of consumer that will receive the amount</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>yes</td>
+<td>Amount of payout in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>yes</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>merchant_reference</td>
+<td>string(255)</td>
+<td>no</td>
+<td>Merchant reference identifier</td>
+</tr>
+<tr>
+<td>notification_url</td>
+<td>string(65535)</td>
+<td>no</td>
+<td>URL where notification for payout is sent</td>
 </tr>
 </tbody></table>
 
@@ -725,6 +1168,93 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>payout</td>
 <td><a href="#singlepayout">SinglePayout</a></td>
+<td>The created payout</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+<h2 id='single-payouts-new-endpoint'>Single Payouts New Endpoint</h2><h3 id='create-single-payout-2'>Create Single Payout</h3>
+<p><code>POST /single_payouts_new</code></p>
+
+<p>Creates single payout, merchant wallet to consumer wallet</p>
+
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"consumer@emp.com"</span>,
+  <span class="s2">"amount"</span>: 100,
+  <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+  <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>,
+  <span class="s2">"notification_url"</span>: <span class="s2">"http://example.com/notification"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"ezw_reference_id"</span>: <span class="s2">"1010312223"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"pending"</span>,
+  <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+<span class="o">}</span>
+</code></pre>
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string(255)</td>
+<td>yes</td>
+<td>Email address of consumer that will receive the amount</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>yes</td>
+<td>Amount of payout in minor currency unit</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string(3)</td>
+<td>yes</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>merchant_reference</td>
+<td>string(255)</td>
+<td>no</td>
+<td>Merchant reference identifier</td>
+</tr>
+<tr>
+<td>notification_url</td>
+<td>string(65535)</td>
+<td>no</td>
+<td>URL where notification for payout is sent</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payout</td>
+<td><a href="#singlepayoutnew">SinglePayoutNew</a></td>
 <td>The created payout</td>
 </tr>
 <tr>
@@ -784,7 +1314,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </thead><tbody>
 <tr>
 <td>payout_requests</td>
-<td><a href="#payout-request">PayoutRequest[]</a></td>
+<td><a href="#payoutrequest">PayoutRequest[]</a></td>
 <td>Yes</td>
 <td>Array of payout request objects</td>
 </tr>
@@ -810,7 +1340,84 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Any errors that occurred during the request.</td>
 </tr>
 </tbody></table>
-<h1 id='data-types'>Data Types</h1><h2 id='transfer'>Transfer</h2>
+<h2 id='batch-payouts-new-endpoint'>Batch Payouts New Endpoint</h2><h3 id='create-batch-payout-2'>Create Batch Payout</h3>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"payout_requests"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer1@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 100,
+      <span class="s2">"currency"</span>: <span class="s2">"USD"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 200,
+      <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc124"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+      <span class="s2">"amount"</span>: 350,
+      <span class="s2">"currency"</span>: <span class="s2">"GBP"</span>,
+      <span class="s2">"merchant_reference"</span>: <span class="s2">"abc125"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"unique_ids"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+          <span class="s2">"email"</span>: <span class="s2">"consumer1@emerchantpay.com"</span>,
+          <span class="s2">"amount"</span>: 100,
+          <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+          <span class="s2">"merchant_reference"</span>: <span class="s2">"abc123"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+          <span class="s2">"amount"</span>: 200,
+          <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+          <span class="s2">"merchant_reference"</span>: <span class="s2">"abc124"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"email"</span>: <span class="s2">"consumer2@emerchantpay.com"</span>,
+          <span class="s2">"amount"</span>: 350,
+          <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+          <span class="s2">"merchant_reference"</span>: <span class="s2">"abc125"</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"status"</span>: <span class="s2">"pending"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST /batch_payouts_new</code></p>
+
+<p>Creates batch payout, merchant wallet to consumer wallet</p>
+
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Requried</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payout_requests</td>
+<td><a href="#payoutrequest">PayoutRequest[]</a></td>
+<td>Yes</td>
+<td>Array of payout request objects</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response fields</strong></p>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -819,10 +1426,62 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>unique_id</td>
-<td>string</td>
-<td>Unique id defined by eZeeWallet for later use</td>
+<td>batch_payout</td>
+<td><a href="#batchpayoutnew">BatchPayoutNew</a></td>
+<td>The created payout</td>
 </tr>
+<tr>
+<td>error</td>
+<td><a href="#error">Error</a></td>
+<td>Any errors that occurred during the request.</td>
+</tr>
+</tbody></table>
+<h2 id='accounts'>Accounts</h2><h3 id='get-account-data'>Get Account Data</h3>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"john.doe@example.com"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"wallet_account_number"</span>: 1,
+  <span class="s2">"verification_status"</span>: <span class="s2">"verified"</span>,
+  <span class="s2">"account_status"</span>: <span class="s2">"active"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>GET /account</code></p>
+
+<p>Gets consumer account data by email</p>
+
+<p><strong>Body params</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Requried</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Yes</td>
+<td>Email of consumer</td>
+</tr>
+</tbody></table>
+<h1 id='data-types'>Data Types</h1><h2 id='transfer'>Transfer</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>transaction_id</td>
 <td>string</td>
@@ -851,17 +1510,66 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>return_success_url</td>
 <td>string</td>
-<td>URL where the consumer must be redirected to deposit money if status is pending async</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
 </tr>
 <tr>
 <td>return_failure_url</td>
 <td>string</td>
-<td>URL where the consumer must be redirected to deposit money if status is pending async</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
 </tr>
 <tr>
 <td>redirect_url</td>
 <td>string</td>
-<td>URL where the consumer must be redirected to deposit money if status is pending async</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+</tbody></table>
+<h2 id='transfernew'>TransferNew</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ezw_reference_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>merchant_transaction_id</td>
+<td>string</td>
+<td>Unique transfer transaction id defined by merchant</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Currency code in ISO 4217</td>
+</tr>
+<tr>
+<td>consumer_email</td>
+<td>string</td>
+<td>Email address of consumer who owns the source wallet</td>
+</tr>
+<tr>
+<td>return_success_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+<tr>
+<td>return_failure_url</td>
+<td>string</td>
+<td>URL where the consumer must be redirected to deposit money if the status is pending async</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: approved or pending or declined</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of transfer transaction in minor currency unit</td>
 </tr>
 </tbody></table>
 <h2 id='payoutrequest'>PayoutRequest</h2>
@@ -917,6 +1625,30 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Merchant reference identifier</td>
 </tr>
 </tbody></table>
+<h2 id='singlepayoutnew'>SinglePayoutNew</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ezw_reference_id</td>
+<td>string</td>
+<td>Unique id defined by eZeeWallet for later use</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Status of the transfer transaction: approved or pending</td>
+</tr>
+<tr>
+<td>merchant_reference</td>
+<td>string</td>
+<td>Merchant reference identifier</td>
+</tr>
+</tbody></table>
 <h2 id='batchpayout'>BatchPayout</h2>
 <table><thead>
 <tr>
@@ -936,7 +1668,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Status of the transfer transaction: pending or failed</td>
 </tr>
 </tbody></table>
-<h2 id='billingaddress'>BillingAddress</h2>
+<h2 id='batchpayoutnew'>BatchPayoutNew</h2>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -945,37 +1677,17 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>first_name</td>
-<td>string</td>
-<td>First name of the consumer</td>
+<td>unique_id</td>
+<td>array</td>
+<td>Array of  <a href="#consumerdata">ConsumerData</a></td>
 </tr>
 <tr>
-<td>last_name</td>
+<td>status</td>
 <td>string</td>
-<td>Last name of the consumer</td>
-</tr>
-<tr>
-<td>address1</td>
-<td>string</td>
-<td>First line of the address</td>
-</tr>
-<tr>
-<td>city</td>
-<td>string</td>
-<td>City</td>
-</tr>
-<tr>
-<td>zip_code</td>
-<td>string</td>
-<td>Zip code</td>
-</tr>
-<tr>
-<td>country</td>
-<td>string</td>
-<td>Country</td>
+<td>Status of the payout: pending or failed</td>
 </tr>
 </tbody></table>
-<h2 id='creditcard'>CreditCard</h2>
+<h2 id='consumerdata'>ConsumerData</h2>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -984,24 +1696,24 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>holder</td>
-<td>string</td>
-<td>Name of the holder</td>
+<td>email</td>
+<td>string(255)</td>
+<td>Email address of consumer that will receive the amount</td>
 </tr>
 <tr>
-<td>number</td>
-<td>string</td>
-<td>First six and last four numbers on the card</td>
+<td>amount</td>
+<td>integer</td>
+<td>Amount of payout in minor currency unit</td>
 </tr>
 <tr>
-<td>expiration_month</td>
-<td>string</td>
-<td>Expiration month of the card</td>
+<td>currency</td>
+<td>string(3)</td>
+<td>Currency code in ISO 4217</td>
 </tr>
 <tr>
-<td>expiration_year</td>
-<td>string</td>
-<td>Expiration year of the card</td>
+<td>merchant_reference</td>
+<td>string(255)</td>
+<td>Merchant reference identifier</td>
 </tr>
 </tbody></table>
 <h2 id='error'>Error</h2>
@@ -1020,7 +1732,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>message</td>
 <td>string</td>
-<td>human-readable message with simple description of the error</td>
+<td>human-readable message with a simple description of the error</td>
 </tr>
 </tbody></table>
 <h2 id='pagination'>Pagination</h2>
@@ -1066,11 +1778,6 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Unique transfer transaction id defined by merchant</td>
 </tr>
 <tr>
-<td>unique_id</td>
-<td>string</td>
-<td>Unique id defined by eZeeWallet for later use</td>
-</tr>
-<tr>
 <td>status</td>
 <td>string</td>
 <td>Status of the transfer transaction request</td>
@@ -1078,17 +1785,17 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>signature</td>
 <td>string</td>
-<td>The signature of the notification used to verify the notifcation</td>
+<td>The signature of the notification used to verify the notification</td>
 </tr>
 </tbody></table>
 
-<p>Status can be: approved or declined. The signature is a mean of security to ensure that eZeeWallet is really the sender of the notification. It is generated by concatenating the unique id of the transaction with merchant name and generating a SHA1 Hash (Hex) of the string:</p>
+<p>Status can be: approved or declined. The signature is a mean of security to ensure that eZeeWallet is really the sender of the notification. It is generated by concatenating the transaction id of the transaction with the merchant name and generating a SHA1 Hash (Hex) of the string:</p>
 
-<p><code>SHA1 Hash (Hex) of &lt;unique_id&gt;&lt;merchant api_username&gt;</code></p>
+<p><code>SHA1 Hash (Hex) of &lt;transaction_id&gt;&lt;merchant api_username&gt;</code></p>
 
 <p><strong>Example:</strong></p>
 
-<p><code>unique_id = 123456789abcdefg</code></p>
+<p><code>transaction_id = 123456789abcdefg</code></p>
 
 <p><code>merchant api_username = 0987654321xyz</code></p>
 
@@ -1098,12 +1805,20 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <p>Example response</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"transaction_id"</span> : <span class="s2">"merchant_transaction_id"</span>,
-  <span class="s2">"unique_id"</span> : <span class="s2">"123456789abcdefg"</span>,
+  <span class="s2">"transaction_id"</span> : <span class="s2">"123456789abcdefg"</span>,
   <span class="s2">"status"</span> : <span class="s2">"approved"</span>,
   <span class="s2">"signature"</span> : <span class="s2">"9ec1df9a7013f6a5b952b9d3f12d620475d37c86"</span>
 <span class="o">}</span>
-</code></pre><h2 id='notificationecho'>NotificationEcho</h2>
+</code></pre>
+<p>Whitelist below IPs for getting notification:</p>
+
+<ul>
+<li>80.82.206.228</li>
+<li>5.179.225.28</li>
+<li>34.251.52.23</li>
+<li>52.16.175.123</li>
+</ul>
+<h2 id='notificationecho'>NotificationEcho</h2>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1114,10 +1829,17 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>unique_id</td>
 <td>string</td>
-<td>Unique id defined by eZeeWallet for later use</td>
+<td>Unique transfer transaction id defined by merchant</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"unique_id"</span> : <span class="s2">"123456789abcdefg"</span>
+<span class="o">}</span>
+</code></pre><h1 id='errors'>Errors</h1>
 <p>eZeeWallet API attempts to return appropriate HTTP status codes for every request and returns errors with HTTP status, human readable error message and machine parsable error code and description in JSON format</p>
 
 <table><thead>
@@ -1163,21 +1885,6 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>Currency mismatch</td>
 </tr>
 <tr>
-<td>407</td>
-<td>400 Bad Request</td>
-<td>One of the payout currencies mismatched to the currency of source wallets</td>
-</tr>
-<tr>
-<td>407</td>
-<td>400 Bad Request</td>
-<td>Payout currency mismatched to the currency of source wallets</td>
-</tr>
-<tr>
-<td>407</td>
-<td>400 Bad Request</td>
-<td>Target wallet currency is different than the currency of the payout</td>
-</tr>
-<tr>
 <td>408</td>
 <td>400 Bad Request</td>
 <td>Transaction ID already processed</td>
@@ -1201,11 +1908,6 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>413</td>
 <td>400 Bad Request</td>
 <td>One of the payout amounts is of an invalid format</td>
-</tr>
-<tr>
-<td>413</td>
-<td>400 Bad Request</td>
-<td>Payout amount is in an invalid format</td>
 </tr>
 <tr>
 <td>414</td>
@@ -1241,6 +1943,41 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>420</td>
 <td>400 Bad Request</td>
 <td>Credit payout request already approved</td>
+</tr>
+<tr>
+<td>421</td>
+<td>400 Bad Request</td>
+<td>Credit payout request already declined</td>
+</tr>
+<tr>
+<td>422</td>
+<td>400 Bad Request</td>
+<td>Merchant is not allowed to process transaction for this consumer\&#39;s country</td>
+</tr>
+<tr>
+<td>423</td>
+<td>400 Bad Request</td>
+<td>Source wallet account not found</td>
+</tr>
+<tr>
+<td>424</td>
+<td>400 Bad Request</td>
+<td>One of the payout currencies mismatched to the currency of source wallets</td>
+</tr>
+<tr>
+<td>425</td>
+<td>400 Bad Request</td>
+<td>Payout currency mismatched to the currency of source wallets</td>
+</tr>
+<tr>
+<td>426</td>
+<td>400 Bad Request</td>
+<td>Target wallet currency is different than the currency of the payout</td>
+</tr>
+<tr>
+<td>427</td>
+<td>400 Bad Request</td>
+<td>Payout amount is in an invalid format</td>
 </tr>
 <tr>
 <td>500</td>
