@@ -334,9 +334,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.3.4</strong></p>
+<p><strong>API version 1.3.5</strong></p>
 
-<p><strong>Documentation version 1.3.4</strong></p>
+<p><strong>Documentation version 1.3.5</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -448,6 +448,12 @@
 <td>Diganta Mandal</td>
 <td>Added new endpoints for Transactions</td>
 </tr>
+<tr>
+<td>1.3.5</td>
+<td>2023/09/22</td>
+<td>Diganta Mandal</td>
+<td>Removed staging old endpoint</td>
+</tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
 <p>eZeeWallet API supports creating and listing transfer transactions via <strong>HTTPS using JSON</strong>.</p>
@@ -465,12 +471,8 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Staging New</td>
+<td>Staging</td>
 <td>https://stg.ezeewallet.com/api</td>
-</tr>
-<tr>
-<td>Staging Old</td>
-<td>https://staging.ezeewallet.com/api</td>
 </tr>
 <tr>
 <td>Production</td>
@@ -863,7 +865,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>amount</td>
 <td>integer</td>
-<td>Unique transaction id defined by merchant</td>
+<td>Amount of transaction in minor currency unit</td>
 </tr>
 <tr>
 <td>currency</td>
