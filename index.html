@@ -340,9 +340,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.4.0</strong></p>
+<p><strong>API version 1.9.0</strong></p>
 
-<p><strong>Documentation version 1.4.0</strong></p>
+<p><strong>Documentation version 1.9.0</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -489,6 +489,12 @@
 <td>2025/11/10</td>
 <td>Diganta Mandal</td>
 <td>Updated info regarding the providing parameters</td>
+</tr>
+<tr>
+<td>1.9.0</td>
+<td>2025/11/10</td>
+<td>Diganta Mandal</td>
+<td>Updated info regarding the pending transfers</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -945,17 +951,15 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <ul>
 <li>Approved – the payment was transferred from consumer&#39;s account to your merchant account.</li>
 <li>Declined – the payment was declined. See the Error section in our API documentation for more information.</li>
-<li>Pending – the consumer does not have enough balance for the transaction and needs to top up.</li>
+<li>Pending – the payment was not approved or declined by the consumer.</li>
 </ul>
-
-<p>The customer will be prompted to log in to their account and deposit the difference. Once the deposit is finalised, you will receive a <a href="#notification">Notification</a> to the notification URL specified in your request upon transfer success or error and merchant must respond to us via <a href="#notificationecho">NotificationEcho</a>.</p>
 
 <p><strong>Notifications Possible statuses for the notification sent to merchant:</strong></p>
 
 <ul>
-<li>Approved – when the deposit of the user was successful, and the funds have been transferred immediately to your account.</li>
-<li>Declined – when the deposit was not successful. In such cases, the user will have to retry the deposit on your website.</li>
-<li>Timeout – when the user took too long to finalise the deposit or did not follow the redirect.</li>
+<li>Approved – when the user approved the transfer, and the funds were transferred immediately to your account.</li>
+<li>Declined – when the user does not approve the transfer, and no funds are transferred. A decline reason is returned.</li>
+<li>Timeout – when the user took too long to approve or decline the transfer.</li>
 </ul>
 <h3 id='listtransfers'>ListTransfers</h3>
 <p><code>GET /transfers?ezw_reference_id=value</code></p>
@@ -1962,6 +1966,11 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>signature</td>
 <td>string</td>
 <td>The signature of the notification used to verify the notification</td>
+</tr>
+<tr>
+<td>declined_reason</td>
+<td>string</td>
+<td>Decline reason, returned when the transfer status is declined</td>
 </tr>
 </tbody></table>
 
