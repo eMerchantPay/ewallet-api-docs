@@ -340,9 +340,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.9.0.4</strong></p>
+<p><strong>API version 1.9.5</strong></p>
 
-<p><strong>Documentation version 1.9.0.4</strong></p>
+<p><strong>Documentation version 1.9.5</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -501,6 +501,12 @@
 <td>2026/01/19</td>
 <td>Diganta Mandal</td>
 <td>Added new IPs for getting notification</td>
+</tr>
+<tr>
+<td>1.9.5</td>
+<td>2026/02/24</td>
+<td>Diganta Mandal</td>
+<td>The amount parameter must be sent in minor currency units with two implied decimal places for all transaction types</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -687,7 +693,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>amount</td>
 <td>integer</td>
 <td>yes</td>
-<td>Amount of transaction in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -841,7 +847,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>amount</td>
 <td>integer</td>
 <td>yes</td>
-<td>Amount of transaction in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -898,7 +904,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>amount</td>
 <td>integer</td>
-<td>Amount of transaction in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -1108,7 +1114,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>amount</td>
 <td>integer</td>
 <td>yes</td>
-<td>Amount of transaction in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -1266,7 +1272,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>amount</td>
 <td>integer</td>
 <td>yes</td>
-<td>Amount of payout in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -1353,7 +1359,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <td>amount</td>
 <td>integer</td>
 <td>yes</td>
-<td>Amount of payout in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -1632,7 +1638,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>amount</td>
 <td>integer</td>
-<td>Amount of transfer transaction in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -1711,7 +1717,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>amount</td>
 <td>integer</td>
-<td>Amount of transfer transaction in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 </tbody></table>
 <h2 id='refund'>Refund</h2>
@@ -1735,7 +1741,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>amount</td>
 <td>integer</td>
-<td>Amount of refund in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -1769,7 +1775,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>amount</td>
 <td>integer</td>
-<td>Amount of payout in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -1884,7 +1890,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>amount</td>
 <td>integer</td>
-<td>Amount of payout in minor currency unit</td>
+<td>Amount in minor currency units with two implied decimal places</td>
 </tr>
 <tr>
 <td>currency</td>
