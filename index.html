@@ -357,9 +357,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='version'>Version</h1>
-<p><strong>API version 1.9.8</strong></p>
+<p><strong>API version 2.0.1</strong></p>
 
-<p><strong>Documentation version 1.9.8</strong></p>
+<p><strong>Documentation version 2.0.1</strong></p>
 <h2 id='history'>History</h2>
 <table><thead>
 <tr>
@@ -530,6 +530,12 @@
 <td>2026/03/23</td>
 <td>Milko Mihailov</td>
 <td>Added new endpoint to get merchant balances</td>
+</tr>
+<tr>
+<td>2.0.1</td>
+<td>2029/04/29</td>
+<td>Diganta Mandal</td>
+<td>Added new error details</td>
 </tr>
 </tbody></table>
 <h1 id='overview'>Overview</h1>
@@ -2169,7 +2175,7 @@ The currency field is in <strong>ISO 4217</strong> format.</p>
 <tr>
 <td>401</td>
 <td>400 Bad Request</td>
-<td>Parameters are missing or invalid</td>
+<td>Parameters are missing or invalid<br/>The password parameter has been deprecated</td>
 </tr>
 <tr>
 <td>402</td>
